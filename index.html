@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href=" @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Varela+Round&display=swap');">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,17 +18,17 @@
            </div>
             <div class="cart2_div">
                 <div class="form_container1">
-                    <form>
+                    <form name="frm">
                         <div class="form1" id="product_form">
                             <p>Product Name</p>
                             <input type="text" name="Product Name" placeholder="Product" >
                         </div>
                         <div class="form2"  id="amount_form">
                             <p>Amount</p>
-                            <input type="text" name="Amount" placeholder="amount">
+                            <input type="number" name="Amount" placeholder="amount">
                         </div> 
                         <div class="form3">
-                            <button id="btn">Add to cart</button>
+                            <button type="submit" id="btn">Add to cart</button>
                         </div>
                     </form> 
                 </div>
@@ -40,6 +41,10 @@
                             </div>
                             <div class="box2">
 
+                            </div>
+                            <div class="balance">
+                                <p>Total Amount</p>
+                                <p id="total-balance">0</p>
                             </div>
 
                         </div>

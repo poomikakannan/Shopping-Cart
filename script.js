@@ -1,34 +1,82 @@
 "use strict"
 
-let input1 = document.getElementById('product_form')
-let input2 = document.getElementById('amount_form')
-let btn = document.getElementById('btn')
+document.querySelector('form[name="frm"]').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  
+  let productName = document.forms["frm"]["Product Name"].value.trim();
+  let amount = document.forms["frm"]["Amount"].value.trim();
 
 
-btn.addEventListener("click",but1)
+  if (productName === "" || amount === "") {
+      alert("Please fill in all fields");
+      return;
+  }
+
+  addToCart(productName, amount);
+
+  document.forms["frm"].reset();
+});
+
+function addToCart(productName, amount) {
+  let cartContent = document.querySelector('.box2');
+  let totalBalanceElement = document.getElementById('total-balance');
+
+  let productContainer = document.createElement('div');
+  productContainer.className = 'productContainer';
+
+  let productDiv = document.createElement('div');
+  productDiv.className = 'productDiv';
+  productDiv.textContent = productName;
+
+  let amountDiv = document.createElement('div');
+  amountDiv.className = 'amountDiv';
+  amountDiv.textContent = amount;
+
+  productContainer.appendChild(productDiv);
+  productContainer.appendChild(amountDiv);
+
+  cartContent.appendChild(productContainer);
 
 
+  var dltbtn = document.createElement('span');
+  dltbtn.className = 'fa-solid fa-trash';
+  dltbtn.style.visibility = 'hidden'; 
 
-function but1(){
+
+  productContainer.appendChild(dltbtn);
+
  
+  productContainer.addEventListener('mouseover', function() {
+      dltbtn.style.visibility = 'visible';
+  });
 
-  if(value==null){
+ 
+  productContainer.addEventListener('mouseout', function() {
+      dltbtn.style.visibility = 'hidden';
+  });
 
+  dltbtn.addEventListener('click', function() {
+      cartContent.removeChild(productContainer);
+      updateTotalBalance();
+  });
 
-  if(input1.value=="" || input2.value=="")
-  {
-     alert("Please Enter a Valid Product")
-  }
-  else{
-   data1.innerText=input1.value;
-   input1.value="";
-   
-   data2.innerText=input2.value;
-   input2.value=""
-   
-   document.append(data1,data2)
-  }
-
+  updateTotalBalance();
 }
-  debtn.add
+
+function updateTotalBalance() {
+  let totalBalanceElement = document.getElementById('total-balance');
+  let amountDivs = document.querySelectorAll('.amountDiv');
+  let totalAmount = 0;
+
+  amountDivs.forEach(function(amountDiv) {
+      totalAmount += parseFloat(amountDiv.textContent);
+  });
+
+  totalBalanceElement.textContent = totalAmount;
 }
+
+
+
+
+
